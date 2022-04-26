@@ -1,71 +1,76 @@
 import React, { Component } from 'react';
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
 import InputTodo from './InputTodo';
 import TodoList from './TodoList';
+/* eslint-disable */
 
 class TodoContainer extends Component {
-  state = {
-    todos: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [],
+    };
+  }
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
-      .then(response => response.json())
-      .then(data => this.setState({ todos: data }));
+    fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
+      .then((response) => response.json())
+      .then((data) => this.setState({ todos: data }));
   }
 
   handleChange = (id) => {
-    this.setState(prevState => ({
-      todos: prevState.todos.map(todo => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
             completed: !todo.completed,
-          }
+          };
         }
         return todo;
       }),
-    }))
+    }));
   }
 
-  deleteTodo = id => {
+  deleteTodo = (id) => {
+    const { todos } = this.state;
     this.setState({
       todos: [
-        ...this.state.todos.filter(todo => todo.id !== id)
-      ]
+        ...todos.filter((todo) => todo.id !== id),
+      ],
     });
   }
 
-  addTodoItem = title => {
+  addTodoItem = (title) => {
     const newTodo = {
       id: uuidv4(),
-      title: title,
-      completed: false
+      title,
+      completed: false,
     };
     this.setState({
-      todos: [...this.state.todos, newTodo]
+      todos: [...this.state.todos, newTodo],
     });
   };
 
   setUpdate = (updatedTitle, id) => {
     this.setState({
-      todos: this.state.todos.map(todo => {
+      todos: this.state.todos.map((todo) => {
         if (todo.id === id) {
-          todo.title = updatedTitle
+          todo.title = updatedTitle;
         }
-        return todo
+        return todo;
       }),
-    })
+    });
   }
 
   render() {
     return (
-      <div className='container'>
-        <div className='inner'>
+      <div className="container">
+        <div className="inner">
           <Header />
-          <InputTodo addTodoProps={this.addTodoItem}/>
-          <TodoList 
+          <InputTodo addTodoProps={this.addTodoItem} />
+          <TodoList
             todos={this.state.todos}
             handleChangeProps={this.handleChange}
             deleteTodoProps={this.deleteTodo}
@@ -73,7 +78,7 @@ class TodoContainer extends Component {
           />
         </div>
       </div>
-    )
+    );
   }
 }
 
