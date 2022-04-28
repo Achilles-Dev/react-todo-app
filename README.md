@@ -24,7 +24,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Link to Online Version
 
-   [Todo App React](https://achilles-dev.github.io/react-todo-app/build) 
+   [Todo App React](https://achilles-dev.github.io/react-todo-app/) 
 
 ## Authors
 

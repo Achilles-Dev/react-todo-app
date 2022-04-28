@@ -3,8 +3,13 @@ import styles from './TodoItem.module.css';
 
 /* eslint-disable */
 class TodoItem extends Component {
-  state = {
-    editing: false,
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      editing: false,
+    }
+    
   }
 
   handleEditing = () => {
