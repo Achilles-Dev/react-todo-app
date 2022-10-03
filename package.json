@@ -2,7 +2,7 @@
   "name": "todo-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://achilles-dev.github.io/react-todo-app/",
+  "homepage": "https://achilles-dev.github.io/react-todo-app",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b dev -d build"
   },
   "eslintConfig": {
     "extends": [
